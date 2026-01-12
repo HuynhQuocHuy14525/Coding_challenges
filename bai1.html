@@ -19,10 +19,12 @@
 
     let markHigherBMI= markBMI > johnBMI;
     if(markBMI > johnBMI){
-            document.getElementById("output").innerText= "Mark's BMI higher than John's";
+        console.log("Mark's BMI higher than John's");
+        document.getElementById("output").innerText= "Mark's BMI higher than John's";
 
     } else {
-            document.getElementById("output").innerText= "John's BMI higher than Mark's";
+        console.log("John's BMI higher than Mark's");
+        document.getElementById("output").innerText= "John's BMI higher than Mark's";
 
     }           
     document.getElementById("output").innerText += "\nMark's BMI: " + markBMI;
