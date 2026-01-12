@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="23654001" content="Huynh Quoc Huy">
+    <title>Bai1</title>
+</head>
+<body>
+    <p id="output"></p>
+</body>
+</html>
+<script>
+    let markMass= 78, markHeight= 1.69;
+    let johnMass= 92, johnHeight= 1.95;
+
+    let markBMI= markMass / (markHeight * markHeight);
+    let johnBMI= johnMass / (johnHeight * johnHeight);
+
+    let markHigherBMI= markBMI > johnBMI;
+    if(markBMI > johnBMI){
+            document.getElementById("output").innerText= "Mark's BMI higher than John's";
+
+    } else {
+            document.getElementById("output").innerText= "John's BMI higher than Mark's";
+
+    }           
+    document.getElementById("output").innerText += "\nMark's BMI: " + markBMI;
+    document.getElementById("output").innerText += "\nJohn's BMI: " + johnBMI;
+</script>
