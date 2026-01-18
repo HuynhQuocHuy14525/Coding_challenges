@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="23654001" content="Huynh Quoc Huy">
+    <title>bai2</title>
+    <style>
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 80px;
+            padding: 5px;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+            
+    </style>
+</head>
+
+<body>
+
+    <h2>Tip Calculator (Sử dụng Array)</h2>
+    <p>Nhập 3 hóa đơn để tạo mảng bills:</p>
+
+    <div class="input-group">
+        <input type="number" id="bill1">
+        <input type="number" id="bill2">
+        <input type="number" id="bill3">
+    </div>
+
+    <button onclick="processArrays()">Tính Toán & Tạo Mảng</button>
+
+    <div>
+        <p>Mảng Hóa đơn (Bills): <br> <p id="outBills">[]</p></p>
+        <p>Mảng Tiền Tip (Tips): <br> <p id="outTips">[]</p></p>
+        <p>Mảng Tổng tiền (Totals): <br> <p id="outTotals">[]</p></p>
+    </div>
+
+    <script>
+        function calcTip(bill) {
+            return (bill >= 50 && bill <= 300) ? bill * 0.15 : bill * 0.20;
+        }
+
+        function processArrays() {
+            let b1 = Number(document.getElementById('bill1').value);
+            let b2 = Number(document.getElementById('bill2').value);
+            let b3 = Number(document.getElementById('bill3').value);
+
+            const bills = [b1, b2, b3];
+
+            const tips = [
+                calcTip(bills[0]),
+                calcTip(bills[1]),
+                calcTip(bills[2])
+            ];
+
+            const totals = [
+                bills[0] + tips[0],
+                bills[1] + tips[1],
+                bills[2] + tips[2]
+            ];
+
+            console.log("Bills:", bills);
+            console.log("Tips:", tips);
+            console.log("Totals:", totals);
+
+            document.getElementById("outBills").innerText = `[ ${bills.join(", ")} ]`;
+            document.getElementById("outTips").innerText = `[ ${tips.join(", ")} ]`;
+            document.getElementById("outTotals").innerText = `[ ${totals.join(", ")} ]`;
+        }
+    </script>
+</body>
+
+</html>
