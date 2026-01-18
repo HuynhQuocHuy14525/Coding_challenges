@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="23654001" content="Huynh Quoc Huy">
+    <title>bai1</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+
+        input {
+            width: 60px;
+            padding: 5px;
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+        }
+
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: navy;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Gymnastics - Luật Gấp Đôi</h2>
+    <p>Nhập điểm 3 lượt thi của mỗi đội:</p>
+
+    <div class="input-group">
+        <h3>Dolphins</h3>
+        <input type="number" id="d1" placeholder="D1">
+        <input type="number" id="d2" placeholder="D2">
+        <input type="number" id="d3" placeholder="D3">
+    </div>
+
+    <div class="input-group">
+        <h3>Koalas</h3>
+        <input type="number" id="k1" placeholder="K1">
+        <input type="number" id="k2" placeholder="K2">
+        <input type="number" id="k3" placeholder="K3">
+    </div>
+
+    <button onclick="runGame()">Kiểm Tra Người Thắng</button>
+    <div id="output"></div>
+
+    <script>
+        const calcAverage = (a, b, c) => (a + b + c) / 3;
+
+        function checkWinner(avgDolphins, avgKoalas) {
+            let resultText = "";
+
+            if (avgDolphins >= 2 * avgKoalas) {
+                resultText = `Dolphins win (${avgDolphins} vs. ${avgKoalas})`;
+            }
+            else if (avgKoalas >= 2 * avgDolphins) {
+                resultText = `Koalas win (${avgKoalas} vs. ${avgDolphins})`;
+            }
+            else {
+                resultText = `No team wins... (Dolphins: ${avgDolphins} vs. Koalas: ${avgKoalas})`;
+            }
+
+            console.log(resultText);
+
+            document.getElementById("output").innerText = resultText;
+        }
+
+        function runGame() {
+            const d1 = Number(document.getElementById('d1').value);
+            const d2 = Number(document.getElementById('d2').value);
+            const d3 = Number(document.getElementById('d3').value);
+
+            const k1 = Number(document.getElementById('k1').value);
+            const k2 = Number(document.getElementById('k2').value);
+            const k3 = Number(document.getElementById('k3').value);
+
+            const avgDolphins = calcAverage(d1, d2, d3);
+            const avgKoalas = calcAverage(k1, k2, k3);
+
+            checkWinner(avgDolphins, avgKoalas);
+        }
+    </script>
+</body>
+
+</html>
