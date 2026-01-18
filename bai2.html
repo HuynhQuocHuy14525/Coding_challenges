@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="23654001" content="Huynh Quoc Huy">
+    <title>Bai2</title>
+</head>
+<body>
+    <input id="markMass" type="number" placeholder="Nhap can nang nguoi 1 (kg)">
+    <input id="markHeight" type="number" placeholder="Nhap chieu cao nguoi 1 (m)">
+    <br>
+    
+    <input id="johnMass" type="number" placeholder="Nhap can nang nguoi 2 (kg)">
+    <input id="johnHeight" type="number" placeholder="Nhap chieu cao nguoi 2 (m)">
+    <br>
+    <p id="output"></p>
+</body>
+</html>
+<script>
+    document.getElementById('output').innerText = '';
+    let markMass= document.getElementById("markMass").value;
+    let markHeight= document.getElementById("markHeight").value;
+    let johnMass= document.getElementById("johnMass").value;
+    let johnHeight= document.getElementById("johnHeight").value;
+
+    let markBMI= markMass / (markHeight * markHeight);
+    let johnBMI= johnMass / (johnHeight * johnHeight);
+
+    let markHigherBMI= markBMI > johnBMI;
+    if(markHigherBMI){
+        document.getElementById("output").innerText= "Mark's BMI is higher than John's!";
+    } else {
+        document.getElementById("output").innerText= "John's BMI is higher than Mark's!";
+    }
+</script>
