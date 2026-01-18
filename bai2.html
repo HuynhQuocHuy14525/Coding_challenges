@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="23654001" content="Huynh Quoc Huy">
+    <title>Bai2</title>
+</head>
+<style>
+    input { margin: 10px; display: block; }
+    button { margin: 10px; padding: 5px 15px; cursor: pointer; }
+</style>
+<body>
+    <h3>Người 1 (Mark)</h3>
+    <input id="markMass" type="number" placeholder="Nhap can nang Mark (kg)">
+    <input id="markHeight" type="number" placeholder="Nhap chieu cao Mark (m)">
+    
+    <h3>Người 2 (John)</h3>
+    <input id="johnMass" type="number" placeholder="Nhap can nang John (kg)">
+    <input id="johnHeight" type="number" placeholder="Nhap chieu cao John (m)">
+    
+    <button onclick="soSanhBMI()">So Sánh</button>
+
+    <p id="output" style="font-weight: bold; color: blue;"></p>
+</body>
+<script>
+    function soSanhBMI() {
+        let markMass = document.getElementById("markMass").value;
+        let markHeight = document.getElementById("markHeight").value;
+        let johnMass = document.getElementById("johnMass").value;
+        let johnHeight = document.getElementById("johnHeight").value;
+
+        if (markMass == "" || markHeight == "" || johnMass == "" || johnHeight == "") {
+            alert("Vui lòng nhập đầy đủ thông tin cho cả 2 người!");
+            return;
+        }
+
+        let markBMI = markMass / (markHeight * markHeight);
+        let johnBMI = johnMass / (johnHeight * johnHeight);
+
+        console.log("Mark BMI:", markBMI);
+        console.log("John BMI:", johnBMI);
+
+        let outputText = "";
+        
+        if (markBMI > johnBMI) {
+            outputText = `Mark's BMI (${markBMI.toFixed(2)}) is higher than John's (${johnBMI.toFixed(2)})!`;
+        } else if (johnBMI > markBMI) {
+            outputText = `John's BMI (${johnBMI.toFixed(2)}) is higher than Mark's (${markBMI.toFixed(2)})!`;
+        } else {
+            outputText = "Both have the same BMI!";
+        }
+
+        document.getElementById("output").innerText = outputText;
+    }
+</script>
+</html>

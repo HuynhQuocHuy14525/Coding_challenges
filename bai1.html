@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="23654001" content="Huynh Quoc Huy">
+    <title>Bai1</title>
+</head>
+<style>
+    input { margin: 10px; }
+</style>
+<body>
+    <input id="markMass" type="number" placeholder="Nhap can nang nguoi 1 (kg)">
+    <input id="markHeight" type="number" placeholder="Nhap chieu cao nguoi 1 (m)">
+    <br>
+    <input id="johnMass" type="number" placeholder="Nhap can nang nguoi 2 (kg)">
+    <input id="johnHeight" type="number" placeholder="Nhap chieu cao nguoi 2 (m)">
+    <br>
+    <button onclick="tinhBMI()">Tính Toán</button> 
+    
+    <p id="output"></p>
+</body>
+<script>
+    function tinhBMI() {
+
+        let markMass = document.getElementById("markMass").value;
+        let markHeight = document.getElementById("markHeight").value;
+        let johnMass = document.getElementById("johnMass").value;
+        let johnHeight = document.getElementById("johnHeight").value;
+
+        if(markMass == "" || markHeight == "" || johnMass == "" || johnHeight == "") {
+            alert("Vui lòng nhập đầy đủ thông tin!");
+            return;
+        }
+
+        let markBMI = markMass / (markHeight * markHeight);
+        let johnBMI = johnMass / (johnHeight * johnHeight);
+
+        let markHigherBMI = markBMI > johnBMI;
+        
+        console.log(markHigherBMI);
+        document.getElementById("output").innerText = "Mark's BMI is higher than John's: " + markHigherBMI;
+    }
+</script>
+</html>
