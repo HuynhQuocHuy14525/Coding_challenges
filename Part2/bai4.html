@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="23654001" content="Huynh Quoc Huy">
+    <title>Bai4</title>
+    <style>
+       
+
+        h2 {
+            text-align: center;
+        }
+
+        .input-section {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .input-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        button {
+            padding: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .average-box {
+            margin-top: 15px;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Tip Calculator (10 Hóa đơn)</h2>
+
+        <div class="input-section">
+            <div class="input-wrapper"><label>Bill 1</label><input type="number" class="bill-input" ></div>
+            <div class="input-wrapper"><label>Bill 2</label><input type="number" class="bill-input"></div>
+            <div class="input-wrapper"><label>Bill 3</label><input type="number" class="bill-input"></div>
+            <div class="input-wrapper"><label>Bill 4</label><input type="number" class="bill-input"></div>
+            <div class="input-wrapper"><label>Bill 5</label><input type="number" class="bill-input"></div>
+            <div class="input-wrapper"><label>Bill 6</label><input type="number" class="bill-input"></div>
+            <div class="input-wrapper"><label>Bill 7</label><input type="number" class="bill-input"></div>
+            <div class="input-wrapper"><label>Bill 8</label><input type="number" class="bill-input"></div>
+            <div class="input-wrapper"><label>Bill 9</label><input type="number" class="bill-input"></div>
+            <div class="input-wrapper"><label>Bill 10</label><input type="number" class="bill-input"></div>
+        </div>
+
+        <button onclick="calculateAll()">Tính toán ngay</button>
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        const calcTip = function (bill) {
+            return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+        }
+
+        const calcAverage = function (arr) {
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i];
+            }
+            return sum / arr.length;
+        }
+
+        function calculateAll() {
+            const inputElements = document.getElementsByClassName('bill-input');
+
+            const bills = [];
+            const tips = [];
+            const totals = [];
+
+            for (let i = 0; i < inputElements.length; i++) {
+                let val = Number(inputElements[i].value);
+                bills.push(val);
+            }
+
+            for (let i = 0; i < bills.length; i++) {
+                const tip = calcTip(bills[i]);
+                tips.push(tip);
+                totals.push(tip + bills[i]);
+            }
+
+            let html = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bill</th>
+                            <th>Tip</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            for (let i = 0; i < bills.length; i++) {
+                html += `
+                    <tr>
+                        <td>${bills[i]}</td>
+                        <td>${tips[i].toFixed(2)}</td>
+                        <td>${totals[i].toFixed(2)}</td>
+                    </tr>
+                `;
+            }
+
+            html += `</tbody></table>`;
+
+            const avgTotal = calcAverage(totals);
+            html += `<div class="average-box">Trung bình tổng cộng: ${avgTotal.toFixed(2)}</div>`;
+
+            document.getElementById("output").innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>
